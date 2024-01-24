@@ -110,7 +110,7 @@ echo "Trimmed reads and fastQC files going into $OUTDIR/trimmed"
 echo "... loading TrimGalore"
 module load Trim_Galore
 echo "...starting trimming"
-
+##Pre-Processing
 trim_galore --fastqc -j 24 --output_dir $OUTDIR/trimmed --paired $read_file1 $read_file2
 
 echo "... trimming complete"
@@ -156,7 +156,7 @@ fi
 echo "Alignment files going into $OUTDIR/bams"
 echo "... loading STAR"
 module load STAR
-
+##Alignment using STAR
 if [ -f "$OUTDIR/genome/Genome" ]
 then
     echo "Reference genome index exists."
@@ -208,6 +208,7 @@ else
 fi
 echo "... loading SAMtools"
 module load SAMtools
+##post mapping formatting and filtering 
 echo "... performing a MAPQ filter of 1"
 
 for file in $OUTDIR/bams/"$outname"*sortedByCoord.out.bam
