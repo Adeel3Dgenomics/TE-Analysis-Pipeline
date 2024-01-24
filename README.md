@@ -5,5 +5,4 @@ In this project, we have utilized the RNA-Seq data to detect the Transposable El
 2) &nbsp; STAR (for alignment) <br />
 3) &nbsp; SAMtools (post-processing and formatting) <br />
 4) &nbsp; TEtranscript (pre-installed at Sapelo2 GACRC)
-5) &nbsp; DESeq2 R-Package to detect the differentially expressed TEs
-
+5) &nbsp; DESeq2 R-Package to detect the differentially expressed TEs (Integrated installed in TEtranscript )
