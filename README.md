@@ -1,8 +1,8 @@
 # Transposable-Elements-Expression-Analysis-Pipeline
-In this project, we have utilized the RNA-Seq data to detect the Transposable Elements (TEs) expression using TEtranscript package (The Gale Hammell Lab). Here, in this project, we have analyzed the Morc3 alleles (Morc3b and Morc3ab) mutants post fertilization time points (i:e 6 hpf and 24hpf) bulk RNA-Seq data. 
+In this project, we have utilized the RNA-Seq data to detect the Transposable Elements (TEs) expression using TEtranscript package. Here, in this project, we have analyzed the Morc3 alleles (Morc3b and Morc3ab) mutants post fertilization time points (i:e 6 hpf and 24hpf) bulk RNA-Seq data. 
 ### Required Tools 
 1) &nbsp; Pre-processing <br />
-2) &nbsp; Genome alignment with STAR  <br />
+2) &nbsp; Genome alignment with STAR (with Multimappers) <br />
 3) &nbsp; Post-Alignment formatting and filtering with SAMtools <br />
 4) &nbsp; TE expression identification with TEtranscript (pre-installed at Sapelo2 GACRC)
 5) &nbsp; DESeq2 R-Package to detect the differentially expressed TEs (Integrated installed in TEtranscript )
@@ -33,10 +33,21 @@ mkdir ref
 ```
 mkdir bams
 ```
-Repeat this step for control and treated samples
+Repeat this step for wild and mutant samples
 ```
 STAR --runThreadN 24 --genomeDir ./ref/ --outFileNamePrefix ./bams/ \
-      --readFilesCommand zcat --readFilesIn read_val_1.fastq read_val_2.fastq  --outSAMtype BAM SortedByCoordinate \
+      --readFilesCommand zcat --readFilesIn wild_read_val_1.fastq wild_read_val_2.fastq  --outSAMtype BAM SortedByCoordinate \
       --outSAMmultNmax 1 --alignEndsType EndToEnd --alignIntronMax 1 --alignMatesGapMax 2000
-```
+
+STAR --runThreadN 24 --genomeDir ./ref/ --outFileNamePrefix ./bams/ \
+      --readFilesCommand zcat --readFilesIn mutant_read_val_1.fastq mutant_read_val_2.fastq  --outSAMtype BAM SortedByCoordinate \
+      --outSAMmultNmax 1 --alignEndsType EndToEnd --alignIntronMax 1 --alignMatesGapMax 2000
+```      
 ### 3) Post alignment formatting and filtering with SAMtools
+
+```
+samtools view -bS -h -bq1 wild_Aligned.sortedByCoord.out.bam | samtools sort - > wild_filter_sorted.bam
+
+samtools view -bS -h -bq1 mutant_Aligned.sortedByCoord.out.bam | samtools sort - > mutant_filter_sorted.bam
+```
+### 4) F
