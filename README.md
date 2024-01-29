@@ -1,5 +1,5 @@
 # Transposable-Elements-Expression-Analysis-Pipeline
-In this project, we have utilized the RNA-Seq data to detect the Transposable Elements (TEs) expression using TEtranscript package. Here, in this project, we have analyzed the Morc3 alleles (Morc3b and Morc3ab) mutants post fertilization time points (i:e 6 hpf and 24hpf) bulk RNA-Seq data. 
+In this project, we have utilized the RNA-Seq data to detect the Transposable Elements (TEs) expression using TEtranscript package (https://academic.oup.com/bioinformatics/article/31/22/3593/240793?login=true). Here, in this project, we have analyzed the Morc3 alleles (Morc3b and Morc3ab) mutants post fertilization time points (i:e 6 hpf and 24hpf) bulk RNA-Seq data. 
 ### Required Tools 
 1) &nbsp; Pre-processing <br />
 2) &nbsp; Genome alignment with STAR (with Multimappers) <br />
@@ -7,6 +7,7 @@ In this project, we have utilized the RNA-Seq data to detect the Transposable El
 4) &nbsp; TE expression identification with TEtranscript (pre-installed at Sapelo2 GACRC)
 5) &nbsp; DESeq2 R-Package to detect the differentially expressed TEs (Integrated installed in TEtranscript )
 
+# General steps for data processing 
 
 ### 1) Pre-processing: 
 Trim_Glore was used for the pre-processing of raw fastq files.
@@ -50,4 +51,13 @@ samtools view -bS -h -bq1 wild_Aligned.sortedByCoord.out.bam | samtools sort - >
 
 samtools view -bS -h -bq1 mutant_Aligned.sortedByCoord.out.bam | samtools sort - > mutant_filter_sorted.bam
 ```
-### 4) F
+### 4) File conversion from bam to bigwig for visualization 
+```
+samtools index -M wild_filter_sorted.bam -> wild_filter_sorted.bam.bai
+samtools index -M mutant_filter_sorted.bam -> mutant_filter_sorted.bam.bai
+```
+#### IGV visualization 
+```
+bamCoverage -b wild_filter_sorted.bam -o wild_filter.bw
+bamCoverage -b mutant_filter_sorted.bam -o mutant_filter.bw
+
