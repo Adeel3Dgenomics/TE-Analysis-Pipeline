@@ -56,9 +56,11 @@ samtools view -bS -h -bq1 mutant_Aligned.sortedByCoord.out.bam | samtools sort -
 samtools index -M wild_filter_sorted.bam -> wild_filter_sorted.bam.bai
 samtools index -M mutant_filter_sorted.bam -> mutant_filter_sorted.bam.bai
 ```
-#### IGV visualization 
+--> IGV visualization 
 ```
 bamCoverage -b wild_filter_sorted.bam -o wild_filter.bw
 bamCoverage -b mutant_filter_sorted.bam -o mutant_filter.bw
+```
+### 5) TE counts using TEtranscipt 
 
-
+Files required for the TE
