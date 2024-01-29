@@ -61,3 +61,4 @@ samtools index -M mutant_filter_sorted.bam -> mutant_filter_sorted.bam.bai
 bamCoverage -b wild_filter_sorted.bam -o wild_filter.bw
 bamCoverage -b mutant_filter_sorted.bam -o mutant_filter.bw
 
+
