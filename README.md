@@ -1,5 +1,5 @@
 # Transposable Elements Expression Analysis
-RNA-Seq data to detect the Transposable Elements (TEs) expression using TEtranscript package [Publication](https://academic.oup.com/bioinformatics/article/31/22/3593/240793?login=true). Here, in this project, we have analyzed the Morc3 alleles (Morc3b and Morc3ab) mutants post fertilization time points (i:e 6 hpf and 24hpf) bulk RNA-Seq data. 
+RNA-Seq data to detect the Transposable Elements (TEs) expression using TEtranscript package [Publication](https://academic.oup.com/bioinformatics/article/31/22/3593/240793?login=true). This software package is build by Here, in this project, we have analyzed the Morc3 alleles (Morc3b and Morc3ab) mutants post fertilization time points (i:e 6 hpf and 24hpf) bulk RNA-Seq data. 
 ### General Steps and tools 
 1) &nbsp; Pre-processing <br />
 2) &nbsp; Genome alignment with _STAR_ (with Multimappers) <br />
