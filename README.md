@@ -1,4 +1,4 @@
-# Transposable-Elements-Expression-Analysis-Pipeline
+# Transposable Elements Expression Analysis Pipeline
 In this project, we have utilized the RNA-Seq data to detect the Transposable Elements (TEs) expression using TEtranscript package (https://academic.oup.com/bioinformatics/article/31/22/3593/240793?login=true). Here, in this project, we have analyzed the Morc3 alleles (Morc3b and Morc3ab) mutants post fertilization time points (i:e 6 hpf and 24hpf) bulk RNA-Seq data. 
 ### Required Tools 
 1) &nbsp; Pre-processing <br />
@@ -9,7 +9,7 @@ In this project, we have utilized the RNA-Seq data to detect the Transposable El
 
 # General steps for data processing 
 
-### 1) Pre-processing: 
+### 1) Pre processing: 
 Trim_Glore was used for the pre-processing of raw fastq files.
 ```
 mkdir trim
@@ -51,6 +51,11 @@ samtools view -bS -h -bq1 wild_Aligned.sortedByCoord.out.bam | samtools sort - >
 
 samtools view -bS -h -bq1 mutant_Aligned.sortedByCoord.out.bam | samtools sort - > mutant_filter_sorted.bam
 ```
+#### batch script for HPC
+
+```
+sbatch mapping.sh
+```
 ### 4) File conversion from bam to bigwig for visualization 
 ```
 samtools index -M wild_filter_sorted.bam -> wild_filter_sorted.bam.bai
@@ -73,7 +78,13 @@ wild_rep3_filter_sorted.bam \
 --TE TE_annotations_DEclusters_new.gtf \
 --mode multi --project TE_out --minread 1 -i 10 --padj 0.05 --sortByPos
 ```
+```
+-t    treated sample bam file
+-c    control/wild sample bam file
+--GTF gene annotation file corresponding to the reference genome assembly 
+--TE  TE annotatation (download from here)
+```
 
 Files required for the TE count analysis
-1) Gene annotation in GTF format ()
+1) Gene annotation in GTF format
 2) TE annotation in GTF format
