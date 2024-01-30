@@ -68,8 +68,10 @@ bamCoverage -b mutant_filter_sorted.bam -o mutant_filter.bw
 ```
 ### 5) TE counts using TEtranscipt 
 ```
-TEtranscripts --format BAM -t mutant_filter_sorted.bam \
--c wild_filter_sorted.bam \
+TEtranscripts --format BAM -t mutant_rep1_filter_sorted.bam \
+mutant_rep2_filter_sorted.bam mutant_rep3_filter_sorted.bam \
+-c wild_rep1_filter_sorted.bam \
+wild_rep2_filter_sorted.bam wild_rep3_filter_sorted.bam \
 --GTF refann.gtf \
 --TE TE_annotations_DEclusters_new.gtf \
 --mode multi --project TE_out --minread 1 -i 10 --padj 0.05 --sortByPos
@@ -85,10 +87,45 @@ TEtranscripts --format BAM -t mutant_filter_sorted.bam \
 sbatch TE_analysis.sh
 ```
 
-#### output 
-Here we have shown the example for just two samples.  
+#### Test output 
+The output contains read counts table (*.cnTable), Expressed Genes (DESeq2_table.txt) and Significant Differentially expressed Genes table (Sig_Diff_Genes.txt).   
+```
+"ENSDARG00000000001"    54      35      48      43      41      31
+"ENSDARG00000000002"    0       2       1       0       0       0
+"ENSDARG00000000018"    776     793     490     410     490     621
+"ENSDARG00000000019"    624     726     740     1074    992     719
+"ENSDARG00000000068"    608     683     662     503     613     631
+"ENSDARG00000000069"    556     598     581     532     575     500
+"ENSDARG00000000086"    279     226     256     220     308     134
+"ENSDARG00000000103"    1306    1270    1366    1230    1522    1031
+"ENSDARG00000000142"    137     116     140     119     123     96
+"ENSDARG00000000151"    6       8       3       2       21      4
+"ENSDARG00000000161"    2       3       3       2       3       6
+"ENSDARG00000000175"    0       2       0       0       0       0
+piggyBac-N2_DR:PiggyBac:DNA	167	264	135	147	95	75
+piggyBac-N3_DR:PiggyBac:DNA	240	289	217	123	74	84
+piggyBac-N4_DR:PiggyBac:DNA	121	159	125	88	50	45
+piggyBac-N5B_DR:PiggyBac:DNA	130	140	124	103	69	62
+piggyBac-N5C_DR:PiggyBac:DNA	56	41	49	56	22	28
+piggyBac-N5_DR:PiggyBac:DNA	69	74	71	51	32	35
+piggyBac-N6_DR:PiggyBac:DNA	17	25	18	7	5	5
+piggyBac-N7_DR:PiggyBac:DNA	343	444	319	249	175	171
+piggyBac-N8_DR:PiggyBac:DNA	231	264	188	142	84	92
+piggyBac-N9_DR:PiggyBac:DNA	207	195	185	128	94	75
+```
+#### Columns names
+1)  Gene/TE
+2)  mutant_rep1_filter_sorted.bam.T
+3)  mutant_rep2_filter_sorted.bam.T
+4)  mutant_rep3_filter_sorted.bam.T
+5)  wild_rep1_filter_sorted.bam.C
+6)  wild_rep2_filter_sorted.bam.C
+7)  wild_rep3_filter_sorted.bam.C
 
-| gene/TE | mutant_filter_sorted.bam.T | wild_filter_sorted.bam.C|
-| :---         |     :---:      |          ---: |
-| "ENSDARG00000000019"  | 629     |  1074   |
-| "ENSDARG00000000142"    | 137     |  119     |
+#### Note: 
+This tool processes both gene counts and TE counts, therefore the output cntTable table contains read counts from both genes and TEs. Here, we only want to process the TEs, Therefore the gene counts will be removed we will only keep TEs read counts.  
+
+### 6) TE counts filtering 
+```
+grep -v "ENS*" out.cntTable > TEs_only_count.cntTable
+```
