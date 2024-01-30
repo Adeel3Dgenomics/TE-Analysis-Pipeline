@@ -132,7 +132,7 @@ grep -v "ENS*" out.cntTable > TEs_only_count.cntTable
 ### 7) Differentially Expressed TEs detection 
 
 ```
-Rscript Diff_TE.R
+Rscript Diff_TE_DESeq2.R
 ```
 
 
