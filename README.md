@@ -82,3 +82,5 @@ wild_rep3_filter_sorted.bam \
 -c   &nbsp;   control/wild sample bam file <br />
 --GTF&nbsp;   gene annotation file corresponding to the reference genome assembly <br />
 --TE &nbsp;   TE annotatation (download from [here](https://www.dropbox.com/sh/1ppg2e0fbc64bqw/AACUXf-TA1rnBIjvykMH2Lcia?dl=0) )<br />
+
+#### output 
