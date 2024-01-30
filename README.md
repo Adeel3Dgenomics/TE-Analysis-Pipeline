@@ -123,8 +123,7 @@ piggyBac-N9_DR:PiggyBac:DNA	207	195	185	128	94	75
 7)  wild_rep3_filter_sorted.bam.C
 
 #### Note: 
-This tool processes both gene counts and TE counts, therefore the output cntTable table contains read counts from both genes and TEs. Here, we only want to process the TEs, Therefore the gene counts will be removed we will only keep TEs read counts.  
-
+This tool is designed to handle both gene counts and TE counts, leading to the inclusion of read counts from both genes and TEs in the output table "cntTable." However, our primary objective is to exclusively process TEs. Therefore, we will exclude the gene counts and retain only the read counts associated with TEs.
 ### 6) TE counts filtering 
 ```
 grep -v "ENS*" out.cntTable > TEs_only_count.cntTable
