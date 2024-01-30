@@ -51,7 +51,7 @@ samtools view -bS -h -bq1 wild_Aligned.sortedByCoord.out.bam | samtools sort - >
 
 samtools view -bS -h -bq1 mutant_Aligned.sortedByCoord.out.bam | samtools sort - > mutant_filter_sorted.bam
 ```
-#### batch script for HPC
+#### batch script for HPC (Parallel Mode) 
 
 ```
 sbatch mapping.sh
