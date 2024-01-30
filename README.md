@@ -128,3 +128,5 @@ This tool is designed to handle both gene counts and TE counts, leading to the i
 ```
 grep -v "ENS*" out.cntTable > TEs_only_count.cntTable
 ```
+
+### 7) 
