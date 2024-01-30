@@ -68,12 +68,8 @@ bamCoverage -b mutant_filter_sorted.bam -o mutant_filter.bw
 ```
 ### 5) TE counts using TEtranscipt 
 ```
-TEtranscripts --format BAM -t mutant_rep1_filter_sorted.bam \
-mutant_rep2_filter_sorted.bam \
-mutant_rep3_filter_sorted.bam \
--c wild_rep1_filter_sorted.bam \
-wild_rep2_filter_sorted.bam \
-wild_rep3_filter_sorted.bam \
+TEtranscripts --format BAM -t mutant_filter_sorted.bam \
+-c wild_filter_sorted.bam \
 --GTF refann.gtf \
 --TE TE_annotations_DEclusters_new.gtf \
 --mode multi --project TE_out --minread 1 -i 10 --padj 0.05 --sortByPos
@@ -88,3 +84,12 @@ wild_rep3_filter_sorted.bam \
 ```
 sbatch TE_analysis.sh
 ```
+
+#### output 
+
+Here we have shown the example for just two samples.  
+
+| gene/TE | mutant_filter_sorted.bam.T | wild_filter_sorted.bam.C|
+| :---         |     :---:      |          ---: |
+| "ENSDARG00000000019"  | 629     |  1074   |
+| "ENSDARG00000000142"    | 137     |  119     |
