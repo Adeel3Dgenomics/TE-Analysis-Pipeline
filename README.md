@@ -86,7 +86,6 @@ sbatch TE_analysis.sh
 ```
 
 #### output 
-
 Here we have shown the example for just two samples.  
 
 | gene/TE | mutant_filter_sorted.bam.T | wild_filter_sorted.bam.C|
