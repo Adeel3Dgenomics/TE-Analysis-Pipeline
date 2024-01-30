@@ -78,7 +78,7 @@ wild_rep2_filter_sorted.bam wild_rep3_filter_sorted.bam \
 ```
  -t  &nbsp;   treated/mutant sample bam file <br />
 -c   &nbsp;   control/wild sample bam file <br />
---GTF&nbsp;   gene annotation file corresponding to the reference genome assembly <br />
+--GTF&nbsp;   gene annotation file corresponding to the reference genome assembly (refann.gtf) <br />
 --TE &nbsp;   TE annotatation (download from [here](https://www.dropbox.com/sh/1ppg2e0fbc64bqw/AACUXf-TA1rnBIjvykMH2Lcia?dl=0) )<br />
 
 #### batch script for TE counts at HPC (Parallel Mode) (Alternative method)
@@ -88,7 +88,7 @@ sbatch TE_analysis.sh
 ```
 
 #### Test output 
-The output contains read counts table (*.cnTable), Expressed Genes (DESeq2_table.txt) and Significant Differentially expressed Genes table (Sig_Diff_Genes.txt).   
+The output contains read counts table (*.cnTable), Expressed Genes (*_gene_TE_analysis.txt), and Significant Differentially expressed Genes table (*sigdiff_gene_TE_Only.txt).   
 ```
 "ENSDARG00000000001"    54      35      48      43      41      31
 "ENSDARG00000000002"    0       2       1       0       0       0
@@ -129,4 +129,16 @@ This tool is designed to handle both gene counts and TE counts, leading to the i
 grep -v "ENS*" out.cntTable > TEs_only_count.cntTable
 ```
 
-### 7) 
+### 7) Differentially Expressed TEs detection 
+
+```
+Rscript Diff_TE.R
+```
+
+
+
+
+
+
+
+
