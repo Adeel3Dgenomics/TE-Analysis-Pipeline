@@ -62,5 +62,18 @@ bamCoverage -b wild_filter_sorted.bam -o wild_filter.bw
 bamCoverage -b mutant_filter_sorted.bam -o mutant_filter.bw
 ```
 ### 5) TE counts using TEtranscipt 
+```
+TEtranscripts --format BAM -t mutant_rep1_filter_sorted.bam \
+mutant_rep2_filter_sorted.bam \
+mutant_rep3_filter_sorted.bam \
+-c wild_rep1_filter_sorted.bam \
+wild_rep2_filter_sorted.bam \
+wild_rep3_filter_sorted.bam \
+--GTF refann.gtf \
+--TE TE_annotations_DEclusters_new.gtf \
+--mode multi --project TE_out --minread 1 -i 10 --padj 0.05 --sortByPos
+```
 
-Files required for the TE
+Files required for the TE count analysis
+1) Gene annotation in GTF format ()
+2) TE annotation in GTF format
