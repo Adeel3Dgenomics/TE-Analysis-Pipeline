@@ -133,8 +133,7 @@ grep -v "ENS*" out.cntTable > TEs_only_count.cntTable
 ```
 Rscript Diff_TE_DESeq2.R
 ```
-Arrange the table and data 
-
+Arrange the tables, merge the count informationa and already available 'Reference Table' data. 
 
 
 
