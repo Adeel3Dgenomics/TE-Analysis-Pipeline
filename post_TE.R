@@ -1,5 +1,5 @@
 
-clean <- read.delim("ab24_count_TE.txt")
+clean <- read.delim("expressed_TE.txt")
 reference_table <- read.delim("reference_table.txt")
 common_values <- merge(reference_table, clean, by = 'Name', all = TRUE) ##add NAs in mismatched
 common_values1 <- merge(clean, reference_table, by = 'Name', all = TRUE)
