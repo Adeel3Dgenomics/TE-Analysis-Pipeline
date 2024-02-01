@@ -12,3 +12,4 @@ res <- results(dds)
 write.table(res, file="expressed_TE.txt", sep="\t",quote=F)
 ##resSig <- res[(!is.na(res$padj) & (res$padj < 0.050000) & (abs(res$log2FoldChange)> 2.000000)), ] 
 ##write.table(resSig, file="new_25hpf_control_sigdiff_gene_TE_Only.txt",sep="\t", quote=F)
+
