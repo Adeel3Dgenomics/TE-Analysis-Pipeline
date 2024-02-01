@@ -66,7 +66,7 @@ samtools index -M mutant_filter_sorted.bam -> mutant_filter_sorted.bam.bai
 bamCoverage -b wild_filter_sorted.bam -o wild_filter.bw
 bamCoverage -b mutant_filter_sorted.bam -o mutant_filter.bw
 ```
-### 5) TE counts using TEtranscipt 
+### 5) TE counts using TEtranscipt (Method 1) 
 ```
 TEtranscripts --format BAM -t mutant_rep1_filter_sorted.bam \
 mutant_rep2_filter_sorted.bam mutant_rep3_filter_sorted.bam \
@@ -128,8 +128,20 @@ This tool is designed to handle both gene counts and TE counts, leading to the i
 ```
 grep -v "ENS*" out.cntTable > TEs_only_count.cntTable
 ```
+### 7) TE counts using FeatureCount (Method 2)
 
-### 7) Differentially Expressed TEs detection 
+Another very handy tool 'FeatureCount' can be use to quantify the read counts of TEs. It uses the TE Annotations and calcultaes the read counts. 
+```
+featureCounts -s 0 -p -M -a TE_ann.gtf  -o count.txt mutant_rep1_filter_sorted.bam mutant_rep2_filter_sorted.bam mutant_rep3_filter_sorted.bam 
+```
+Next step,  is to filter out the irrelavent extraAttributes as follows. 
+
+```
+awk '{print $1"\t"$7"\t"$8"\t"$9"\t"$10"\t"$11"\t"$12"\t"$13}' count.txt  > final_count.txt
+```
+Use the 'final_count.txt' in down stream processing. 
+
+### 8) Differentially Expressed TEs detection 
 
 ```
 Rscript Diff_TE_DESeq2.R
