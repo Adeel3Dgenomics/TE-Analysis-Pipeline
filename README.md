@@ -133,7 +133,7 @@ grep -v "ENS*" out.cntTable > TEs_only_count.cntTable
 ```
 Rscript Diff_TE_DESeq2.R
 ```
-Arrange the tables, merge the count informationa and already available 'Reference Table' data. 
+Arrange the tables, merge the count informationa and already available 'Reference Table' data. Filter out the 'Up and down-regulated TEs' based on your criteria. We used FC > 2 and P-value < 0.05.  
 
 
 
