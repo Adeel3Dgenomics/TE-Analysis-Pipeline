@@ -132,7 +132,7 @@ grep -v "ENS*" out.cntTable > TEs_only_count.cntTable
 
 Another very handy tool 'FeatureCount' can be use to quantify the read counts of TEs. It uses the TE Annotations and calcultaes the read counts. 
 ```
-featureCounts -s 0 -p -M -a TE_ann.gtf  -o count.txt mutant_rep1_filter_sorted.bam mutant_rep2_filter_sorted.bam mutant_rep3_filter_sorted.bam 
+featureCounts -s 0 -p -M -a TE_ann.gtf  -o count.txt mutant_rep1_filter_sorted.bam mutant_rep2_filter_sorted.bam mutant_rep3_filter_sorted.bam wild_rep1_filter_sorted.bam wild_rep2_filter_sorted.bam wild_rep3_filter_sorted.bam
 ```
 Next step,  is to filter out the irrelavent extraAttributes as follows. 
 
