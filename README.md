@@ -137,7 +137,7 @@ featureCounts -s 0 -p -M -a TE_ann.gtf  -o count.txt mutant_rep1_filter_sorted.b
 Next step,  is to filter out the irrelavent extraAttributes as follows. 
 
 ```
-awk '{print $1"\t"$7"\t"$8"\t"$9"\t"$10"\t"$11"\t"$12"\t"$13}' count.txt  > final_count.txt
+awk '{print $1"\t"$6"\t"$7"\t"$8"\t"$9"\t"$10"\t"$11"\t"$12"\t"$13}' count.txt  > final_count.txt
 ```
 Use the 'final_count.txt' in down stream processing. 
 
